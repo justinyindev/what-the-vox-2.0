@@ -38,11 +38,7 @@ export default function NewsCardList({ data }: INewsCardListProps) {
         next={fetchMoreHeadlines}
         hasMore={pageIndex === data.pageInfo.totalPages ? false : true}
         loader={<h4>Loading...</h4>}
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
+        scrollThreshold={0.5}
       >
         {articles.map((data: IArticleResponseData) => (
           <NewsCard headline={data} key={`event_list_${data.title}`} />
