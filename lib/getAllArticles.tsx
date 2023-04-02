@@ -1,6 +1,6 @@
 import { GraphQLClient } from "graphql-request";
 
-interface ArticleType {
+interface IArticleType {
   startDate: string | null;
   endDate: string | null;
   bookmarks: string[];
@@ -16,7 +16,7 @@ export default async function getAllArticles({
   bookmarks,
   page,
   limit,
-}: ArticleType) {
+}: IArticleType) {
   const client = new GraphQLClient(ENDPOINT);
   if (startDate && endDate) {
     startDate = new Date(startDate).toISOString();

@@ -1,8 +1,9 @@
 "use client";
 
-import { IArticleResponseData } from "@/app/page";
 import Image from "next/image";
 import { useState } from "react";
+import Comments from "../Comments/Comments";
+import { IArticleResponseData } from "../NewsCardList/NewsCardList";
 import styles from "./NewsCard.module.css";
 
 interface INewsCardProps {
@@ -40,6 +41,7 @@ export default function NewsCard({ headline }: INewsCardProps) {
           <h2 className={styles.subheading}>View Full Article</h2>
         </a>
       </div>
+      <Comments />
     </div>
   );
 }

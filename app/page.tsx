@@ -4,14 +4,6 @@ import styles from "./page.module.css";
 
 export const PAGE_LIMIT = 10;
 
-export interface IArticleResponseData {
-  title: string;
-  url: string;
-  date: Date;
-  image: string;
-  summary: string;
-}
-
 export default async function Home() {
   const response = await getAllArticles({
     startDate: null,

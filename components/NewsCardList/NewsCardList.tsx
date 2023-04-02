@@ -1,10 +1,26 @@
 "use client";
 
-import { IArticleResponseData, PAGE_LIMIT } from "@/app/page";
+import { PAGE_LIMIT } from "@/app/page";
 import getAllArticles from "@/lib/getAllArticles";
 import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+
+interface ICommentType {
+  user: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+}
+
+export interface IArticleResponseData {
+  title: string;
+  url: string;
+  date: Date;
+  image: string;
+  summary: string;
+  comments: [ICommentType];
+}
 
 interface INewsCardListProps {
   data: { articles: IArticleResponseData[]; pageInfo: any };
@@ -32,7 +48,7 @@ export default function NewsCardList({ data }: INewsCardListProps) {
   };
 
   return (
-    <div>
+    <>
       <InfiniteScroll
         dataLength={articles.length} //This is important field to render the next data
         next={fetchMoreHeadlines}
@@ -44,6 +60,6 @@ export default function NewsCardList({ data }: INewsCardListProps) {
           <NewsCard headline={data} key={`event_list_${data.title}`} />
         ))}
       </InfiniteScroll>
-    </div>
+    </>
   );
 }
