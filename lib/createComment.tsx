@@ -44,5 +44,5 @@ export default async function createComment({
   };
 
   const data: any = await client.request(mutation, variables);
-  return data.headlines;
+  return data.createComment;
 }
