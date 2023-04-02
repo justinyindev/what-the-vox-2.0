@@ -1,4 +1,5 @@
 import { GraphQLClient } from "graphql-request";
+import getEndpointKey from "./getEndpointKey";
 
 interface IArticleType {
   startDate: string | null;
@@ -8,8 +9,6 @@ interface IArticleType {
   limit: number;
 }
 
-const ENDPOINT = process.env.URL_API || "http://localhost:3001/graphql";
-
 export default async function getAllArticles({
   startDate,
   endDate,
@@ -17,7 +16,7 @@ export default async function getAllArticles({
   page,
   limit,
 }: IArticleType) {
-  const client = new GraphQLClient(ENDPOINT);
+  const client = new GraphQLClient(getEndpointKey());
   if (startDate && endDate) {
     startDate = new Date(startDate).toISOString();
     endDate = new Date(endDate).toISOString();

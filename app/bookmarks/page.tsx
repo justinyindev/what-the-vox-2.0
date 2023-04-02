@@ -1,4 +1,3 @@
-
-export default function BookmarksPage() {
+export default async function BookmarksPage() {
   return <div></div>;
 }

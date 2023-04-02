@@ -5,8 +5,8 @@ import styles from "./NavBar.module.css";
 import { useRouter } from "next/navigation";
 
 export default function NavBar() {
-  const userId = "test"
   const router = useRouter();
+
   return (
     <div>
       <nav className={styles.navbar}>
@@ -20,7 +20,7 @@ export default function NavBar() {
           Home
         </button>
 
-        <Link href={`/bookmarks/${userId}`}>
+        <Link href={`/bookmarks`}>
           <button className={styles.button}>Bookmarks</button>
         </Link>
         <Link href="/calendar">

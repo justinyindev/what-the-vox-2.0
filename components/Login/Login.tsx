@@ -4,6 +4,7 @@ import userLogin from "@/lib/userLogin";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import styles from "./Login.module.css";
+import { setCookie } from "cookies-next";
 
 export default function Login() {
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function Login() {
         return;
       }
 
-      localStorage.setItem("authToken", response.token);
+      setCookie("authToken", response.token);
       console.log({ response });
       router.push("/");
     };

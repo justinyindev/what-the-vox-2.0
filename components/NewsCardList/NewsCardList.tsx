@@ -1,10 +1,11 @@
 "use client";
 
 import { PAGE_LIMIT } from "@/app/page";
-import getAllArticles from "@/lib/getAllArticles";
+
 import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import getAllArticles from "@/lib/getAllArticles";
 
 interface ICommentType {
   user: string;

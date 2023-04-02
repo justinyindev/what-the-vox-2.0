@@ -13,7 +13,7 @@ interface INewsCardProps {
 export default function NewsCard({ headline }: INewsCardProps) {
   const [open, setOpen] = useState<boolean>(true);
   return (
-    <div className={styles.main} style={{ height: !open ? "100px" : "" }}>
+    <div className={styles.main} style={{ height: !open ? "100px" : "auto" }}>
       <span className={styles.toggle} onClick={() => setOpen(!open)}>
         {open ? (
           <i className={styles.close}></i>
@@ -24,7 +24,10 @@ export default function NewsCard({ headline }: INewsCardProps) {
 
       <h1 className={styles.heading}>{headline.title}</h1>
 
-      <div className={styles.content} style={{ display: !open ? "none" : "" }}>
+      <div
+        className={styles.content}
+        style={{ display: !open ? "none" : "inherit" }}
+      >
         <div className={styles.flexRow}>
           <Image
             className={styles.image}
@@ -40,8 +43,8 @@ export default function NewsCard({ headline }: INewsCardProps) {
         <a className={styles.link} href={headline.url}>
           <h2 className={styles.subheading}>View Full Article</h2>
         </a>
+        <Comments />
       </div>
-      <Comments />
     </div>
   );
 }

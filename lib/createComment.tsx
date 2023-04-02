@@ -1,4 +1,5 @@
 import { GraphQLClient } from "graphql-request";
+import getEndpointKey from "./getEndpointKey";
 
 interface ICommentType {
   headline: string | null;
@@ -7,15 +8,13 @@ interface ICommentType {
   timestamp: Date;
 }
 
-const ENDPOINT = process.env.URL_API || "http://localhost:3001/graphql";
-
 export default async function createComment({
   headline,
   userId,
   content,
   timestamp,
 }: ICommentType) {
-  const client = new GraphQLClient(ENDPOINT);
+  const client = new GraphQLClient(getEndpointKey());
 
   const mutation = `
   mutation CreateComment($headline: String, $userId: String, $content: String, $timestamp: String) {
