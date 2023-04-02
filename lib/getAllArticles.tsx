@@ -8,7 +8,7 @@ interface ArticleType {
   limit: number;
 }
 
-const ENDPOINT = "http://localhost:3001/graphql";
+const ENDPOINT = process.env.URL_API || "http://localhost:3001/graphql";
 
 export default async function getAllArticles({
   startDate,

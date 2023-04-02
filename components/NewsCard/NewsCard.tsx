@@ -1,6 +1,7 @@
 "use client";
 
 import { IArticleResponseData } from "@/app/page";
+import Image from "next/image";
 import { useState } from "react";
 import styles from "./NewsCard.module.css";
 
@@ -24,10 +25,12 @@ export default function NewsCard({ headline }: INewsCardProps) {
 
       <div className={styles.content} style={{ display: !open ? "none" : "" }}>
         <div className={styles.flexRow}>
-          <img
+          <Image
             className={styles.image}
             src={`data:image/jpeg;base64,${headline.image}`}
             alt={headline.title}
+            width={350}
+            height={250}
           />
           <div className={styles.textContainer}>
             <p className={styles.text}>{headline.summary}</p>

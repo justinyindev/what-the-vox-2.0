@@ -1,8 +1,8 @@
-import NewsCard from "@/components/NewsCard/NewsCard";
+import NewsCardList from "@/components/NewsCardList/NewsCardList";
 import getAllArticles from "@/lib/getAllArticles";
 import styles from "./page.module.css";
 
-const PAGE_LIMIT = 10;
+export const PAGE_LIMIT = 10;
 
 export interface IArticleResponseData {
   title: string;
@@ -23,9 +23,9 @@ export default async function Home() {
 
   return (
     <div className={styles.container}>
-      {response.headlines.map((data: IArticleResponseData) => (
-        <NewsCard headline={data} key={`event_list_${data.title}`} />
-      ))}
+      <NewsCardList
+        data={{ articles: response.headlines, pageInfo: response.pageInfo }}
+      />
     </div>
   );
 }
