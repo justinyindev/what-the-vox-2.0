@@ -32,6 +32,12 @@ export default async function getAllArticles({
         date
         image
         summary
+        comments{
+          user
+          user_id
+          content
+          created_at
+        }
       }
       pageInfo {
         currentPage
