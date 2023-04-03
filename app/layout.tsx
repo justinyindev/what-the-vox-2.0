@@ -11,7 +11,6 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         {/* <NavBar /> */}
-        <Blob />
         {children}
       </body>
     </html>

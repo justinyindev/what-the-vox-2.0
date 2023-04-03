@@ -1,13 +1,24 @@
 .main {
-  height: 100vw;
+  width: 100vw;
   height: 100vh;
   padding: 24px;
+  display: flex;
+  flex-direction: row;
+}
+
+.summary {
+  flex: 1;
+  max-height: 100vh;
+  overflow: scroll;
+  margin-left: 24px;
+  color: #fff;
+  font-size: 2rem;
 }
 
 .screen {
   position: relative;
   width: 400px;
-  height: 600px;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,11 +96,14 @@
   z-index: 3;
 }
 
-.date{
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.32px;
   color: #fff;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 3rem, 3.5rem);
   text-shadow: 0px 0px 0.5rem #fff;
 }
 
@@ -102,7 +116,7 @@
   text-shadow: 0px 0px 0.2rem #fff;
 }
 
-.link:is(:hover, :focus){
+.link:is(:hover, :focus) {
   text-decoration: underline;
 }
 

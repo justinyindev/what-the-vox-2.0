@@ -35,6 +35,9 @@ export default function NewsCard({ headline }: INewsCardProps) {
           </a>
         </div>
       </div>
+      <div className={styles.summary}>
+        {headline.summary}
+      </div>
     </div>
   );
 }

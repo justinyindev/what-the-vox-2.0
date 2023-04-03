@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import styles from "./Blob.module.css";
 
 export default function Blob() {
-  /* -- Glow effect -- */
   const blobRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,13 +20,13 @@ export default function Blob() {
         );
       }
     };
-
     window.addEventListener("pointermove", handlePointerMove);
 
     return () => {
       window.removeEventListener("pointermove", handlePointerMove);
     };
   }, []);
+
 
   return <div ref={blobRef} className={styles.blob}></div>;
 }

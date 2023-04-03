@@ -9,6 +9,7 @@ body {
     Arial, sans-serif;
   text-decoration: none;
   background-color: #000;
+  overflow-x: hidden;
 }
 
 .loading-page {
