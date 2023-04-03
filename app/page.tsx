@@ -2,15 +2,13 @@ import NewsCardList from "@/components/NewsCardList/NewsCardList";
 import getAllArticles from "@/lib/getAllArticles";
 import styles from "./page.module.css";
 
-export const PAGE_LIMIT = 10;
-
 export default async function Home() {
   const response = await getAllArticles({
     startDate: null,
     endDate: null,
     bookmarks: [],
     page: 1,
-    limit: PAGE_LIMIT,
+    limit: 10,
   });
 
   return (

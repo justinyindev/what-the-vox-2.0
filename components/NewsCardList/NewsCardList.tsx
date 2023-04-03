@@ -1,7 +1,5 @@
 "use client";
 
-import { PAGE_LIMIT } from "@/app/page";
-
 import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -41,7 +39,7 @@ export default function NewsCardList({ data }: INewsCardListProps) {
       endDate: null,
       bookmarks: [],
       page: pageIndex,
-      limit: PAGE_LIMIT,
+      limit: 10,
     });
 
     setArticles([...articles, ...response.headlines]);
