@@ -43,23 +43,23 @@ export default function NewsCardList({ data }: INewsCardListProps) {
     });
 
     setArticles([...articles, ...response.headlines]);
-    if (pageIndex + 1 <= data.pageInfo.totalPages) {
-      setPageIndex(pageIndex + 1);
-    }
+    setPageIndex(pageIndex + 1);
   };
   return (
-    <div className={styles.main}>
+    <div>
       <Blob />
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreHeadlines}
-        hasMore={pageIndex === data.pageInfo.totalPages ? false : true}
+        hasMore={pageIndex > data.pageInfo.totalPages ? false : true}
         loader={<h4>Loading...</h4>}
         scrollThreshold={0.5}
       >
-        {articles.map((data: IArticleResponseData) => (
-          <NewsCard headline={data} key={`event_list_${data.title}`} />
-        ))}
+        <div className={styles.main}>
+          {articles.map((data: IArticleResponseData) => (
+            <NewsCard headline={data} key={`event_list_${data.title}`} />
+          ))}
+        </div>
       </InfiniteScroll>
     </div>
   );
