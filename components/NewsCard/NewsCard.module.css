@@ -9,10 +9,23 @@
 .summary {
   flex: 1;
   max-height: 100vh;
-  overflow: scroll;
   margin-left: 24px;
+  padding: 0;
+  font-size: 14px;
   color: #fff;
-  font-size: 2rem;
+  line-height: 3rem;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-shadow: 0px 0px 2px #fff;
+}
+
+.headline{
+  font-size: 24px;
+  margin: 0;
+  text-shadow: 0px 0px 1rem #fff;
+  text-decoration: underline;
 }
 
 .screen {

@@ -6,7 +6,7 @@
   height: 34vmax;
   aspect-ratio: 1;
   background-color: rgb(255, 211, 36);
-  filter: blur(15vmax);
+  filter: blur(8vmax);
   border-radius: 50%;
-  opacity: 0.7;
+  opacity: 0.3;
 }
