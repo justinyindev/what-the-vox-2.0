@@ -27,9 +27,6 @@ export default function NavBar() {
           <button className={styles.button}>Calendar</button>
         </Link>
         <div className={styles.user}>
-          <Link href="/login">
-            <button className={styles.button}>Login</button>
-          </Link>
           <Link href="/signup">
             <button className={styles.button}>Sign Up</button>
           </Link>

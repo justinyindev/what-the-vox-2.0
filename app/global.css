@@ -8,11 +8,7 @@ body {
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
     Arial, sans-serif;
   text-decoration: none;
-  background-color: #111010;
-}
-
-.main-container {
-  display: block;
+  background-color: #000;
 }
 
 .loading-page {
@@ -31,7 +27,7 @@ body {
 }
 .loader::after,
 .loader::before {
-  content: '';  
+  content: "";
   box-sizing: border-box;
   width: 48px;
   height: 48px;
@@ -53,4 +49,4 @@ body {
   100% {
     transform: rotate(360deg);
   }
-} 
+}

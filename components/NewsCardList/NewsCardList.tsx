@@ -6,6 +6,7 @@ import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import getAllArticles from "@/lib/getAllArticles";
+import styles from "./NewsCardList.module.css";
 
 interface ICommentType {
   user: string;
@@ -17,7 +18,7 @@ interface ICommentType {
 export interface IArticleResponseData {
   title: string;
   url: string;
-  date: Date;
+  date: string;
   image: string;
   summary: string;
   comments: [ICommentType];
@@ -49,7 +50,7 @@ export default function NewsCardList({ data }: INewsCardListProps) {
   };
 
   return (
-    <>
+    <div>
       <InfiniteScroll
         dataLength={articles.length} //This is important field to render the next data
         next={fetchMoreHeadlines}
@@ -57,10 +58,12 @@ export default function NewsCardList({ data }: INewsCardListProps) {
         loader={<h4>Loading...</h4>}
         scrollThreshold={0.5}
       >
-        {articles.map((data: IArticleResponseData) => (
-          <NewsCard headline={data} key={`event_list_${data.title}`} />
-        ))}
+        <div className={styles.main}>
+          {articles.map((data: IArticleResponseData) => (
+            <NewsCard headline={data} key={`event_list_${data.title}`} />
+          ))}
+        </div>
       </InfiniteScroll>
-    </>
+    </div>
   );
 }

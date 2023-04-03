@@ -29,7 +29,7 @@ export default function Login() {
       if (!response) {
         return;
       }
-
+      setCookie("userId", response.user_id);
       setCookie("authToken", response.token);
       console.log({ response });
       router.push("/");
