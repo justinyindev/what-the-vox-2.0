@@ -1,19 +1,12 @@
 .blob {
   position: absolute;
-  top: 50%;
+  top: 50vh;
   left: 50%;
-  height: 200px;
-  width: 200px;
-  background-color: #fff;
-}
-
-.blur {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: red;
-  z-index: 1;
+  transform: translate(-50%, -50%);
+  height: 34vmax;
+  aspect-ratio: 1;
+  background-color: rgb(255, 211, 36);
+  filter: blur(15vmax);
+  border-radius: 50%;
+  opacity: 0.7;
 }

@@ -46,8 +46,8 @@
 .overlay {
   background: linear-gradient(
     rgb(255, 211, 36),
-    rgb(255, 211, 36) 0.3px,
-    transparent 2px,
+    rgb(255, 211, 36) 1px,
+    transparent 3px,
     transparent 9px
   );
   background-size: 100% 9px;
@@ -89,7 +89,7 @@
   text-transform: uppercase;
   letter-spacing: 0.32px;
   color: #fff;
-  font-size: 3rem;
+  font-size: 3.5rem;
   text-shadow: 0px 0px 0.5rem #fff;
 }
 
