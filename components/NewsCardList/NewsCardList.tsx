@@ -3,7 +3,6 @@
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Blob from "../Blob/Blob";
-import getHeadlines from "@/lib/getHeadlines";
 import NewsCardWrapper from "../NewsCardWrapper/NewsCardWrapper";
 
 interface ICommentType {
@@ -28,29 +27,28 @@ interface INewsCardListProps {
 
 export default function NewsCardList({ data }: INewsCardListProps) {
   const [headlines, setHeadlines] = useState<IHeadlineResponseData[]>(
-    data.articles
+    data.articles.slice(0, 10)
   );
-  const [pageIndex, setPageIndex] = useState<number>(2);
+  const [pageIndex, setPageIndex] = useState<number>(1);
 
-  const fetchMoreHeadlines = async () => {
-    const response = await getHeadlines({
-      startDate: null,
-      endDate: null,
-      titles: [],
-      page: pageIndex,
-      limit: 10,
-    });
+  const fetchMoreHeadlines = () => {
+    const nextIndex = pageIndex + 1;
+    const nextHeadlines = data.articles.slice(
+      nextIndex * 10, // next page starting index
+      (nextIndex + 1) * 10 // next page ending index
+    );
 
-    setHeadlines([...headlines, ...response.headlines]);
-    setPageIndex(pageIndex + 1);
+    setHeadlines([...headlines, ...nextHeadlines]);
+    setPageIndex(nextIndex);
   };
+
   return (
     <div>
       {/* <Blob /> */}
       <InfiniteScroll
         dataLength={headlines.length}
         next={fetchMoreHeadlines}
-        hasMore={pageIndex > data.pageInfo.totalPages ? false : true}
+        hasMore={pageIndex * 10 < data.articles.length}
         loader={<h4>Loading...</h4>}
         scrollThreshold={0.5}
       >
