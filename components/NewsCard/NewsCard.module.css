@@ -172,6 +172,12 @@
   transform: scale(1.2);
 }
 
+@media (max-width: 800px){
+  .fullscreen{
+    display: none;
+  }
+}
+
 @keyframes pan-overlay {
   from {
     background-position: 0% 0%;
