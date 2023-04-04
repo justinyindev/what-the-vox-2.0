@@ -31,7 +31,7 @@ export default function NewsCard({ headline, fullscreen }: INewsCardProps) {
         }}
       >
         <Link href={fullscreen ? "/" : `/${urlTitle}`}>
-          <i className={styles.fullscreen}>
+          <div className={styles.fullscreen}>
             <svg
               width="24"
               height="24"
@@ -44,7 +44,7 @@ export default function NewsCard({ headline, fullscreen }: INewsCardProps) {
               <path d="M15 21H21V15H19V19H15V21Z" fill="currentColor" />
               <path d="M21 3H15V5H19V9H21V3Z" fill="currentColor" />
             </svg>
-          </i>
+          </div>
         </Link>
         <div
           style={{ backgroundImage: `url("${headline.image}")` }}
@@ -52,16 +52,16 @@ export default function NewsCard({ headline, fullscreen }: INewsCardProps) {
         ></div>
         <div className={styles.overlay}></div>
         {showSummary && (
-          <p
+          <div
             className={styles.summary}
             style={{
               alignItems: fullscreen ? "center" : "flex-start",
               padding: fullscreen ? "36px" : "8px",
-              width: fullscreen ? "75%" : "100%"
+              width: fullscreen ? "75%" : "100%",
             }}
           >
-            {headline.summary}
-          </p>
+            <p>{headline.summary}</p>
+          </div>
         )}
         <div className={styles.content}>
           {!showSummary && (
