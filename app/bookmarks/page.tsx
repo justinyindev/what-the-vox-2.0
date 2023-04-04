@@ -1,5 +1,6 @@
 import NewsCard from "@/components/NewsCard/NewsCard";
 import { IHeadlineResponseData } from "@/components/NewsCardList/NewsCardList";
+import NewsCardWrapper from "@/components/NewsCardWrapper/NewsCardWrapper";
 import getHeadlines from "@/lib/getHeadlines";
 import getUserInfo from "@/lib/getUserInfo";
 import { cookies } from "next/headers";
@@ -22,11 +23,5 @@ export default async function BookmarksPage() {
     limit: 250,
   });
 
-  return (
-    <div>
-      {headlines.map((data: IHeadlineResponseData) => (
-        <NewsCard headline={data} key={`event_list_${data.title}`} />
-      ))}
-    </div>
-  );
+  return <NewsCardWrapper headlines={headlines} />;
 }

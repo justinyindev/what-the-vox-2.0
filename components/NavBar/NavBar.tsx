@@ -2,35 +2,26 @@
 
 import Link from "next/link";
 import styles from "./NavBar.module.css";
-import { useRouter } from "next/navigation";
 
 export default function NavBar() {
-  const router = useRouter();
-
   return (
-    <div>
+    <div className={styles.main}>
       <nav className={styles.navbar}>
-        <button
-          onClick={() => {
-            router.push("/");
-            router.refresh();
-          }}
-          className={styles.button}
-        >
-          Home
-        </button>
+        <Link className={styles.link} href={`/`}>
+          <span>Home</span>
+        </Link>
+        <Link className={styles.link} href={`/bookmarks`}>
+          <span>Bookmarks</span>
+        </Link>
+        <Link className={styles.link} href="/calendar">
+          <span>Calendar</span>
+        </Link>
 
-        <Link href={`/bookmarks`}>
-          <button className={styles.button}>Bookmarks</button>
-        </Link>
-        <Link href="/calendar">
-          <button className={styles.button}>Calendar</button>
-        </Link>
-        <div className={styles.user}>
-          <Link href="/signup">
-            <button className={styles.button}>Sign Up</button>
+        {/* <div className={styles.user}>
+          <Link className={styles.link} href="/signup">
+            <span>Sign Up</span>
           </Link>
-        </div>
+        </div> */}
       </nav>
     </div>
   );

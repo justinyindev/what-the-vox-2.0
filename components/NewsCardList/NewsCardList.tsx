@@ -46,7 +46,7 @@ export default function NewsCardList({ data }: INewsCardListProps) {
   };
   return (
     <div>
-      <Blob />
+      {/* <Blob /> */}
       <InfiniteScroll
         dataLength={headlines.length}
         next={fetchMoreHeadlines}
