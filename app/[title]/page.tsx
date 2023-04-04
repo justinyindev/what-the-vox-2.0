@@ -1,6 +1,6 @@
 import NewsCard from "@/components/NewsCard/NewsCard";
-import { IArticleResponseData } from "@/components/NewsCardList/NewsCardList";
-import getArticles from "@/lib/getArticles";
+import { IHeadlineResponseData } from "@/components/NewsCardList/NewsCardList";
+import getHeadlines from "@/lib/getHeadlines";
 
 type Params = {
   params: {
@@ -9,7 +9,7 @@ type Params = {
 };
 
 export default async function HeadlinePage({ params: { title } }: Params) {
-  const response = await getArticles({
+  const response = await getHeadlines({
     startDate: null,
     endDate: null,
     titles: [decodeURIComponent(title)],
@@ -25,7 +25,7 @@ export default async function HeadlinePage({ params: { title } }: Params) {
 }
 
 export async function generateStaticParams() {
-  const response = await getArticles({
+  const response = await getHeadlines({
     startDate: null,
     endDate: null,
     titles: [],
@@ -33,7 +33,7 @@ export async function generateStaticParams() {
     limit: 250,
   });
 
-  return response.headlines.map((data: IArticleResponseData) => ({
+  return response.headlines.map((data: IHeadlineResponseData) => ({
     title: data.title,
   }));
 }

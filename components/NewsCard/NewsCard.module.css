@@ -157,6 +157,10 @@
 }
 
 .fullscreen {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  aspect-ratio: 1;
   z-index: 3;
   color: #fff;
   position: absolute;

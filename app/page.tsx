@@ -1,9 +1,9 @@
 import NewsCardList from "@/components/NewsCardList/NewsCardList";
-import getArticles from "@/lib/getArticles";
+import getHeadlines from "@/lib/getHeadlines";
 import styles from "./page.module.css";
 
 export default async function Home() {
-  const response = await getArticles({
+  const response = await getHeadlines({
     startDate: null,
     endDate: null,
     titles: [],

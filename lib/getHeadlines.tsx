@@ -9,7 +9,7 @@ interface IArticleType {
   limit: number;
 }
 
-export default async function getArticles({
+export default async function getHeadlines({
   startDate,
   endDate,
   titles,

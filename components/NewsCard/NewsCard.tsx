@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { IArticleResponseData } from "../NewsCardList/NewsCardList";
+import { IHeadlineResponseData } from "../NewsCardList/NewsCardList";
 import styles from "./NewsCard.module.css";
 
 interface INewsCardProps {
-  headline: IArticleResponseData;
+  headline: IHeadlineResponseData;
   fullscreen?: boolean;
 }
 

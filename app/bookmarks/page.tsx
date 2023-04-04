@@ -1,6 +1,6 @@
 import NewsCard from "@/components/NewsCard/NewsCard";
-import { IArticleResponseData } from "@/components/NewsCardList/NewsCardList";
-import getArticles from "@/lib/getArticles";
+import { IHeadlineResponseData } from "@/components/NewsCardList/NewsCardList";
+import getHeadlines from "@/lib/getHeadlines";
 import getUserInfo from "@/lib/getUserInfo";
 import { cookies } from "next/headers";
 
@@ -14,7 +14,7 @@ export default async function BookmarksPage() {
 
   const { userInfo } = await getUserInfo(data);
 
-  const { headlines } = await getArticles({
+  const { headlines } = await getHeadlines({
     startDate: null,
     endDate: null,
     titles: userInfo.bookmarks,
@@ -24,7 +24,7 @@ export default async function BookmarksPage() {
 
   return (
     <div>
-      {headlines.map((data: IArticleResponseData) => (
+      {headlines.map((data: IHeadlineResponseData) => (
         <NewsCard headline={data} key={`event_list_${data.title}`} />
       ))}
     </div>

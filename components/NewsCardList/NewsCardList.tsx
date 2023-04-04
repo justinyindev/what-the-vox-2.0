@@ -1,11 +1,10 @@
 "use client";
 
-import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import styles from "./NewsCardList.module.css";
 import Blob from "../Blob/Blob";
-import getArticles from "@/lib/getArticles";
+import getHeadlines from "@/lib/getHeadlines";
+import NewsCardWrapper from "../NewsCardWrapper/NewsCardWrapper";
 
 interface ICommentType {
   user: string;
@@ -14,7 +13,7 @@ interface ICommentType {
   created_at: string;
 }
 
-export interface IArticleResponseData {
+export interface IHeadlineResponseData {
   title: string;
   url: string;
   date: string;
@@ -24,17 +23,17 @@ export interface IArticleResponseData {
 }
 
 interface INewsCardListProps {
-  data: { articles: IArticleResponseData[]; pageInfo: any };
+  data: { articles: IHeadlineResponseData[]; pageInfo: any };
 }
 
 export default function NewsCardList({ data }: INewsCardListProps) {
-  const [articles, setArticles] = useState<IArticleResponseData[]>(
+  const [headlines, setHeadlines] = useState<IHeadlineResponseData[]>(
     data.articles
   );
   const [pageIndex, setPageIndex] = useState<number>(2);
 
   const fetchMoreHeadlines = async () => {
-    const response = await getArticles({
+    const response = await getHeadlines({
       startDate: null,
       endDate: null,
       titles: [],
@@ -42,24 +41,20 @@ export default function NewsCardList({ data }: INewsCardListProps) {
       limit: 10,
     });
 
-    setArticles([...articles, ...response.headlines]);
+    setHeadlines([...headlines, ...response.headlines]);
     setPageIndex(pageIndex + 1);
   };
   return (
     <div>
       <Blob />
       <InfiniteScroll
-        dataLength={articles.length}
+        dataLength={headlines.length}
         next={fetchMoreHeadlines}
         hasMore={pageIndex > data.pageInfo.totalPages ? false : true}
         loader={<h4>Loading...</h4>}
         scrollThreshold={0.5}
       >
-        <div className={styles.main}>
-          {articles.map((data: IArticleResponseData) => (
-            <NewsCard headline={data} key={`event_list_${data.title}`} />
-          ))}
-        </div>
+        <NewsCardWrapper headlines={headlines} />
       </InfiniteScroll>
     </div>
   );
