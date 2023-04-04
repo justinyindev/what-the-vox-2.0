@@ -2,6 +2,8 @@ import NewsCardList from "@/components/NewsCardList/NewsCardList";
 import getHeadlines from "@/lib/getHeadlines";
 import styles from "./page.module.css";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const response = await getHeadlines({
     startDate: null,
