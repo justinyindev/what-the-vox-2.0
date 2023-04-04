@@ -1,6 +1,6 @@
 import NewsCard from "@/components/NewsCard/NewsCard";
 import { IArticleResponseData } from "@/components/NewsCardList/NewsCardList";
-import getAllArticles from "@/lib/getAllArticles";
+import getArticles from "@/lib/getArticles";
 import getUserInfo from "@/lib/getUserInfo";
 import { cookies } from "next/headers";
 
@@ -14,10 +14,10 @@ export default async function BookmarksPage() {
 
   const { userInfo } = await getUserInfo(data);
 
-  const { headlines } = await getAllArticles({
+  const { headlines } = await getArticles({
     startDate: null,
     endDate: null,
-    bookmarks: userInfo.bookmarks,
+    titles: userInfo.bookmarks,
     page: 1,
     limit: 250,
   });

@@ -4,15 +4,15 @@ import getEndpointKey from "./getEndpointKey";
 interface IArticleType {
   startDate: string | null;
   endDate: string | null;
-  bookmarks: string[];
+  titles: string[];
   page: number;
   limit: number;
 }
 
-export default async function getAllArticles({
+export default async function getArticles({
   startDate,
   endDate,
-  bookmarks,
+  titles,
   page,
   limit,
 }: IArticleType) {
@@ -23,8 +23,8 @@ export default async function getAllArticles({
   }
 
   const query = `
-  query GetHeadlines($startDate: String, $endDate: String, $bookmarks: [String], $page: Int, $limit: Int) {
-    headlines(startDate: $startDate, endDate: $endDate, bookmarks: $bookmarks, page: $page, limit: $limit) {
+  query GetHeadlines($startDate: String, $endDate: String, $titles: [String], $page: Int, $limit: Int) {
+    headlines(startDate: $startDate, endDate: $endDate, titles: $titles, page: $page, limit: $limit) {
       headlines {
         _id
         title
@@ -50,7 +50,7 @@ export default async function getAllArticles({
   const variables = {
     startDate,
     endDate,
-    bookmarks,
+    titles,
     page,
     limit,
   };

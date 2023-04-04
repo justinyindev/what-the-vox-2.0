@@ -1,13 +1,37 @@
-.title {
+.main {
+  width: 100%;
+}
+
+.title_container{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 200px;
+}
+
+.title {
+  text-decoration: none;
   text-align: center;
   font-size: 24px;
   padding: 0 4px;
   margin: 0;
   color: #fff;
-  height: 200px;
+  text-shadow: 0px 0px 1rem #fff;
+  padding-bottom: 12px;
+}
+
+.title:hover{
+  text-decoration: underline;
+}
+
+.title:hover + .clickme{
+  visibility: visible;
+}
+
+.clickme{
+  visibility: hidden;
+  color: #fff;
   text-shadow: 0px 0px 1rem #fff;
 }
 
@@ -26,6 +50,9 @@
   background-color: rgb(243, 201, 33 / 0.5);
   overflow: hidden;
   z-index: 10;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .screen:after,
@@ -55,8 +82,8 @@
 
 .overlay {
   background: linear-gradient(
-    rgb(255, 211, 36),
-    rgb(255, 211, 36) 1px,
+    rgb(255, 212, 42),
+    rgb(228, 202, 107) 1px,
     transparent 3px,
     transparent 9px
   );
@@ -68,6 +95,17 @@
   z-index: 1;
   left: 0;
   top: 0;
+  backdrop-filter: blur(12px);
+}
+
+.screen:hover > .overlay {
+  backdrop-filter: none;
+  background: none;
+  transition: 0.5s ease;
+}
+
+.screen:hover > .image {
+  filter: none;
 }
 
 .image {
@@ -105,17 +143,44 @@
 }
 
 .link {
-  opacity: 0.8;
   font-size: 1.5rem;
   color: #fff;
   font-weight: 400;
   text-decoration: none;
-  text-shadow: 0px 0px 0.2rem #fff;
+  text-shadow: 0px 0px 1rem #fff;
   margin-top: 24px;
 }
 
 .link:is(:hover, :focus) {
   text-decoration: underline;
+}
+
+.summary {
+  display: flex;
+  align-items: flex-start;
+  z-index: 3;
+  transform: rotateY(180deg);
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 0.64px;
+  padding: 8px;
+  margin: 0;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  text-shadow: 0px 0px 1rem #fff;
+}
+
+.fullscreen{
+  z-index: 3;
+  color: #fff;
+  position: absolute;
+  top: 12px;
+  left: 12px; 
+}
+
+.fullscreen:hover{
+  transform: scale(1.2);
 }
 
 @keyframes pan-overlay {

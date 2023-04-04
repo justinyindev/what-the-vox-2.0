@@ -3,9 +3,9 @@
 import NewsCard from "../NewsCard/NewsCard";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import getAllArticles from "@/lib/getAllArticles";
 import styles from "./NewsCardList.module.css";
 import Blob from "../Blob/Blob";
+import getArticles from "@/lib/getArticles";
 
 interface ICommentType {
   user: string;
@@ -34,10 +34,10 @@ export default function NewsCardList({ data }: INewsCardListProps) {
   const [pageIndex, setPageIndex] = useState<number>(2);
 
   const fetchMoreHeadlines = async () => {
-    const response = await getAllArticles({
+    const response = await getArticles({
       startDate: null,
       endDate: null,
-      bookmarks: [],
+      titles: [],
       page: pageIndex,
       limit: 10,
     });
