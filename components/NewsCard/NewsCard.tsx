@@ -54,7 +54,11 @@ export default function NewsCard({ headline, fullscreen }: INewsCardProps) {
         {showSummary && (
           <p
             className={styles.summary}
-            style={{ alignItems: fullscreen ? "center" : "flex-start" }}
+            style={{
+              alignItems: fullscreen ? "center" : "flex-start",
+              padding: fullscreen ? "36px" : "8px",
+              width: fullscreen ? "75%" : "100%"
+            }}
           >
             {headline.summary}
           </p>
