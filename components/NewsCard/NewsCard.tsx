@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { IArticleResponseData } from "../NewsCardList/NewsCardList";
 import styles from "./NewsCard.module.css";
 
@@ -12,13 +12,20 @@ interface INewsCardProps {
 
 export default function NewsCard({ headline, fullscreen }: INewsCardProps) {
   const [showSummary, setShowSummary] = useState<boolean>(false);
-  const epoch = Number(headline.date);
-  const dateString = new Date(epoch).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-  const urlTitle = encodeURIComponent(headline.title);
+  const epoch = useMemo(() => Number(headline.date), [headline]);
+  const dateString = useMemo(
+    () =>
+      new Date(epoch).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
+    [epoch]
+  );
+  const urlTitle = useMemo(
+    () => encodeURIComponent(headline.title),
+    [headline]
+  );
 
   return (
     <div className={styles.main}>

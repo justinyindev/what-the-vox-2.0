@@ -8,11 +8,10 @@ type Params = {
 };
 
 export default async function HeadlinePage({ params: { title } }: Params) {
-  const articleTitle = decodeURIComponent(title);
   const response = await getArticles({
     startDate: null,
     endDate: null,
-    titles: [articleTitle],
+    titles: [decodeURIComponent(title)],
     page: 1,
     limit: 1,
   });
