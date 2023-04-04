@@ -89,7 +89,7 @@ export default function NewsCard({ headline, fullscreen }: INewsCardProps) {
                 rel="noopener noreferrer"
                 href={headline.url}
               >
-                @full article
+                Read full article
               </a>
             </>
           )}

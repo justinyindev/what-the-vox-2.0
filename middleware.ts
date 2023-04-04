@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
     authToken &&
     (await verifyAuth(authToken).catch((error) => console.error(error)));
 
-  if (request.url.includes("/login") && verifiedToken) {
+  if (request.nextUrl.pathname.includes("/login") && verifiedToken) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -19,5 +19,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/bookmarks", "/calendar", "/login"],
+  matcher: ["/bookmarks", "/calendar"],
 };
